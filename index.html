@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comic Sagas</title>
+
+  <!-- Favicon -->
+
+  <!-- Google Fonts -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Golos+Text:wght@400;500;600;700;800;900&display=swap">
+
+  <!-- Hamburger Menu Stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- MY CSS -->
+  <style>
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Golos Text", sans-serif;
+  background: #0c2c68;
+  color: white;
+}
+
+/* HEADER AND NAVBAR */
+.site-header {
+  background: #081f4b;
+  padding: 15px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hide desktop links on mobile */
+.nav-links {
+  display: none; 
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: lightcoral;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* HOME PAGE */
+.home {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("https://images.ctfassets.net/s5n2t79q9icq/7wY5DvUPDvuDlzHEYZ3b7G/3a323e1cfcb1f29d3a1ade905ee178ac/Babe984goqiqwuefhcosb_1920x1000.jpg?q=80") center/cover;
+  color: lightcoral;
+  padding: 20px;
+}
+
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12,44,104,.7);
+}
+
+.home-content {
+  position: relative;
+  max-width: 700px;
+}
+.home-content p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home h1 {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.outline-btn {
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+/* STORY CARDS */
+.card-section {
+  padding: 40px 20px;
+  background-color: blue;
+  text-align: center;
+  color: lightcoral;
+  font-size: 24px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+/* Mobile: Single Column */
+.card-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 30px;
+}
+
+/* CARD 1, 2, AND 3 Styles */
+.card-grid article {
+  padding: 15px;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 670px;
+}
+
+.card1 { 
+  background-color: lightcoral; 
+}
+.card1 h3 { 
+  color: #2E8B57; 
+  font-family:"Dela Gothic One", cursive; 
+}
+
+.card2 { 
+  background: #2E8B57; 
+}
+.card2 h3 { 
+  color: lightcoral;
+  font-family:"Dela Gothic One", cursive;
+}
+
+.card3 { 
+  background: goldenrod; 
+}
+.card3 h3 { 
+  color: white; 
+  font-family:"Dela Gothic One", cursive; 
+}
+
+.card1 img{
+  width: 100%;
+  height: 524px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card2 img{
+  width: 100%;
+  height: 524px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card3 img{
+  width: 100%;
+  height: 524px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ABOUT */
+.about {
+  padding: 40px 20px;
+  background-color: lightcoral;
+}
+
+.about-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 20px;
+  color: darkseagreen;
+  font-size: 1.1rem;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.about-page h2 {
+  font-size: 32px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+.about img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* GALLERY */
+.gallery {
+  background: #2E8B57;
+  color: lightcoral;
+  padding: 60px;
+  text-align: center;
+  font-size: 30px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+#books_container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+}
+
+.book{
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px;
+  color: black;
+  height: 300px;
+}
+
+.book:hover{
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  color: transparent;
+}
+
+/* Displaying specific images for each book on hover */
+.book[data-id="1"]:hover{
+  background: url("https://i.ebayimg.com/images/g/3goAAOSwaSFlhFZH/s-l400.jpg") center/cover;
+}
+
+.book[data-id="2"]:hover{
+  background: url("https://i.ebayimg.com/images/g/bKoAAOSwSUJiYGbh/s-l1200.jpg") center/cover;
+}
+
+.book[data-id="3"]:hover{
+  background: url("https://comicbookclublive.com/wp-content/uploads/2024/10/idw-logo-jpg.webp") center/cover;
+}
+
+.book[data-id="4"]:hover{
+  background: url("https://images.seeklogo.com/logo-png/38/1/dark-horse-comics-logo-png_seeklogo-386510.png") center/cover;
+}
+
+.book[data-id="5"]:hover{
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjCC1pMg8RjX1B9PwnZAnU8fXn0nMjOXo8IA&s") center/cover;
+}
+
+.book[data-id="6"]:hover{
+  background: url("https://i.ebayimg.com/images/g/bKoAAOSwSUJiYGbh/s-l1200.jpg") center/cover;
+}
+
+.book[data-id="7"]:hover{
+  background: url("https://cdn.theorg.com/eb831a8f-c5dc-4523-a21c-f69e5c4dd73c_medium.jpg") center/cover;
+}
+
+.book[data-id="8"]:hover{
+  background: url("https://www.animationmagazine.net/wordpress/wp-content/uploads/viz-media.jpg") center/cover;
+}
+
+
+/* PRICING */
+.pricing {
+  padding: 40px 20px;
+  background-color: dimgray;
+  color:lightblue;
+  font-size: 30px;  
+  font-family:"Dela Gothic One", cursive;
+}
+
+.pricing-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.price-card {
+  background: black;
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price-card p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.price-card:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER & MISC */
+.footer { 
+  background: #081f4b; padding: 40px; 
+  text-align: center; 
+}
+.social-links { 
+  margin-top: 20px; display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+}
+.social-links a { 
+  color: white; 
+  text-decoration: none; 
+}
+
+/* RESPONSIVE MENU */
+.menu-icon {
+  display: block; /* Show hamburger on mobile */
+  font-size: 28px;
+  cursor: pointer;
+  color: lightcoral;
+}
+
+.menu {
+  background-color: #081f4b;
+  border: 2px solid #333;
+  border-radius: 5px;
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  width: 200px;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: lightcoral;
+  z-index: 1001;
+}
+
+.menu.active {
+  display: block;
+}
+
+/* FOR DESKTOP */
+@media only screen and (min-width: 700px) {
+  .site-header { padding: 15px 40px; }
+  
+  /* Show links on desktop */
+  .nav-links { 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 30px;
+    font-family: dela gothic one, cursive;
+  }
+
+  /* Hides the hamburger icon */
+  .menu-icon { 
+    display: none !important;
+  }
+  .menu { 
+    display: none !important;
+  }
+
+  .home h1 { 
+    font-size: 4rem; 
+  }
+
+  .card-section { 
+    padding: 80px 40px; font-size: 40px; 
+  }
+  .card-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .about { 
+    padding: 110px 80px; 
+  }
+  .about-page { 
+    grid-template-columns: 1fr 1fr; 
+    border-radius: 40px; 
+    padding: 40px;
+    font-size: 1.5rem;
+  }
+  .about-page h2 { 
+    font-size: 60px; 
+  }
+
+  #books_container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .book{
+    border: 1px solid #ccc;
+    color: black;
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
+    /*width for 4 columns */
+    width: calc(25% - 1rem); 
+  }
+
+  .pricing-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="site-header">
+   <i class="fa-solid fa-bars menu-icon" id="menuIcon"></i>
+  <nav class="navbar">
+    <ul class="nav-links"> 
+      <li><a href="#about-us">About</a></li> 
+      <li><a href="#catalogue">Catalogue</a></li> 
+      <li><a href="#contact">Contacts</a></li> 
+    </ul>
+    <!-- HAMBURGER MENU -->
+    <div class="menu" id="menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-us">About</a></li>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="home">
+  <div class="home-overlay"></div>
+  <div class="home-content">
+    <h1>Comic Sagas</h1>
+    <p>
+      A catalogue of the most influential comic storylines of all time and where to find them.
+    </p>
+  </div>
+</section>
+
+<!-- STORYLINES -->
+<section id="storylines" class="card-section">
+
+  <h2>Storylines You Can Find</h2>
+
+  <div class="card-grid">
+
+  <!-- CARD 1 -->
+  <article class="card1">
+    <img src="https://m.media-amazon.com/images/I/81DlFDB1EFL._AC_UF1000,1000_QL80_.jpg" alt="Daredevil Born Again cover">
+    <h3>Daredevil: Born Again</h3>
+    <p>
+     The story details Daredevil's descent into insanity at the Kingpin's hands,
+     as well as a struggle to build a new life for himself.
+    </p>
+    <a href="#" class="btn">Read More</a>
+  </article>
+
+  <!-- CARD 2 -->
+  <article class="card2">
+    <img src="https://imgix-media.wbdndc.net/ingest/book/preview/89fef8ab-81e2-4ce9-b8be-1e07369ebb30/cbbe1c85-2db0-4372-a4b1-278b2d7959f9/0.jpg" alt="Superman Birthright cover">
+    <h3>Superman: Birthright</h3>
+    <p>
+      A modern retelling of Superman's origin story, focusing on Clark Kent’s
+      journey to becoming the world's greatest superhero.
+    </p>
+    <a href="#" class="btn">Read More</a>
+  </article>
+
+<!-- CARD 3 -->
+<article class="card3">
+  <img src="https://m.media-amazon.com/images/I/71mtaLIaERL._AC_UF1000,1000_QL80_.jpg" alt="Spider-Man Life Story cover">
+  <h3>Spider-Man: Life Story</h3>
+  <p>
+    This tells the entire life story of Peter Parker, aging him in real time
+    against major historical events.
+  </p>
+  <a href="#" class="btn">Read More</a>
+</article>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about-us" class="about">
+
+  <div class="about-grid">
+
+    <article class= "about-page">
+
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+        We’re a subscription-based, reader-focused catalogue built to help 
+        comic fans navigate iconic storylines like Superman: Birthright, Infinite Crisis, and more. 
+        Our mission is to enhance the reading experience by organizing and presenting comic arcs with clarity and context, 
+        whether you’re a new reader or a longtime fan, because great stories should be easy to explore and enjoy.
+        </p>
+        _____
+        <a href="#contact" class="abt-btn">Contact Me</a>
+      </div>
+      <img src="https://media.timeout.com/images/103327325/750/562/image.jpg" alt="Comic store">
+
+    </article>
+  </div>
+</section>
+
+<!-- PUBLISHERS GALLERY -->
+
+<section id="catalogue"class="gallery">
+
+  <h2>Publishers From Across the World</h2>
+
+  <div id="books_container"></div>
+
+</section>
+
+<!-- PRICING -->
+
+<section class="pricing">
+
+  <h2>Subscription Tiers</h2>
+
+  <div class="pricing-grid">
+
+<div class="price-card">
+  <h3>Base Level</h3>
+  <p class="price"><strong>$25</strong>/month</p>
+  <p>
+    For $25/month, you will be subscribing to our base level. 
+    This means that you can read as many comics as you desire, 
+    the only catch is that you must return them by the end of that month.
+  </p>
+  <a href="#" class="price-btn">Contact Me</a>
+</div>
+
+<div class="price-card">
+  <h3>Comic Reader</h3>
+  <p class="price"><strong>$250</strong>/year</p>
+  <p>
+    For $250/year, you will be subscribing to our Comic Reader level. 
+    This means that you can read as many comics as you desire, 
+    returning only when you have finished and are ready for the next set.
+  </p>
+  <a href="#" class="price-btn">Contact Me</a>
+</div>
+
+<div class="price-card">
+  <h3>Enthusiast</h3>
+  <p class="price"><strong>$400</strong> flat fee</p>
+  <p>
+    For a $400 flat fee, you have subscribed to our Enthusiast level. 
+    This means you have free rein over the comics you choose and swap, 
+    and you have priority over limited items. 
+    This lasts for your lifetime.
+  </p>
+  <a href="#" class="price-btn">Contact Me</a>
+</div>
+
+  </div>
+</section>
+
+<!-- SOCIAL -->
+
+<footer id="contact" class="footer">
+
+  <h2>Follow Us</h2>
+
+  <div class="social-links">
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+  </div>
+
+</footer>
+
+<!-- HAMBURGER MENU SCRIPT -->
+<script>
+  const menuIcon = document.querySelector('#menuIcon');
+  const menu = document.querySelector('#menu');
+
+  menuIcon.addEventListener('click', function(){
+    menu.classList.toggle('active');
+
+    if(menu.classList.contains('active')){
+      this.classList.remove('fa-bars');
+      this.classList.add('fa-times');
+    }else{
+      this.classList.remove('fa-times');
+      this.classList.add('fa-bars');
+    }
+    })
+  </script>
+
+<!-- BOOKS API SCRIPT -->
+  <script>
+    // async and wait
+    async function getbooks(){
+      try{
+        const response = await fetch("https://raw.githubusercontent.com/GHammis/db.json/refs/heads/main/db.json");
+        // //fetching from api endpoint url
+
+        const data = await response.json();
+        console.log(data.books)
+
+        // DOM
+        const books_container = document.getElementById('books_container');
+                
+        for(let book of data.books){
+          const single_book = document.createElement('div');
+
+          single_book.classList.add('book');
+          single_book.setAttribute('data-id', book.id); 
+
+          single_book.innerHTML = `
+          <h3> ${book.title}</h3>
+          <p><strong> Year: ${book.year} </strong></p>
+          <p><strong> In Stock: ${book.stocked} </strong></p>
+                    `
+          if(book.stocked){
+            single_book.style.backgroundColor = "lightblue";
+          }else{
+            single_book.style.backgroundColor = "maroon";
+          }
+          books_container.appendChild(single_book);
+        }
+            
+      }catch(error){
+        console.log("Error --->: ", error);
+      }
+    }
+    getbooks();
+  </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Golos Text", sans-serif;
+  background: #0c2c68;
+  color: white;
+}
+
+/* HEADER AND NAVBAR */
+.site-header {
+  background: #081f4b;
+  padding: 15px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hide desktop links on mobile */
+.nav-links {
+  display: none; 
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: lightcoral;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* HOME PAGE */
+.home {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("spidey.jpg") center/cover;
+  color: lightcoral;
+  padding: 20px;
+}
+
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12,44,104,.7);
+}
+
+.home-content {
+  position: relative;
+  max-width: 700px;
+}
+.home-content p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home h1 {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.outline-btn {
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+/* STORY CARDS */
+.card-section {
+  padding: 40px 20px;
+  background-color: blue;
+  text-align: center;
+  color: lightcoral;
+  font-size: 24px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+/* Mobile: Single Column */
+.card-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 30px;
+}
+
+/* CARD 1, 2, AND 3 Styles */
+.card-grid article {
+  padding: 15px;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 670px;
+}
+
+.card1 { 
+  background-color: lightcoral; 
+}
+.card1 h3 { 
+  color: #2E8B57; 
+  font-family:"Dela Gothic One", cursive; 
+}
+
+.card2 { 
+  background: #2E8B57; 
+}
+.card2 h3 { 
+  color: lightcoral;
+  font-family:"Dela Gothic One", cursive;
+}
+
+.card3 { 
+  background: goldenrod; 
+}
+.card3 h3 { 
+  color: white; 
+  font-family:"Dela Gothic One", cursive; 
+}
+
+.card1 img{
+  width: 100%;
+  height: 524px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card2 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card3 img{
+  width: 100%;
+  height: 524px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ABOUT */
+.about {
+  padding: 40px 20px;
+  background-color: lightcoral;
+}
+
+.about-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 20px;
+  color: darkseagreen;
+  font-size: 1.1rem;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.about-page h2 {
+  font-size: 32px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+.about img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* GALLERY */
+.gallery {
+  background: #2E8B57;
+  color: lightcoral;
+  padding: 60px;
+  text-align: center;
+  font-size: 30px;
+  font-family:"Dela Gothic One", cursive;
+}
+
+#books_container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+}
+
+.book{
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px;
+  color: black;
+  height: 300px;
+}
+
+.book:hover{
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  color: lightcoral;
+}
+
+/* Displaying specific images for each book on hover */
+.book[data-id="1"]:hover{
+  background: url("marvel20logo-400x400.jpg") center/cover;
+}
+
+.book[data-id="2"]:hover{
+  background: url("dc20logo-618x618.jpg") center/cover;
+}
+
+.book[data-id="3"]:hover{
+  background: url("idw-logo-jpg.webp") center/cover;
+}
+
+.book[data-id="4"]:hover{
+  background: url("dark20horse20logo-600x600.png") center/cover;
+}
+
+.book[data-id="5"]:hover{
+  background: url("dynamiteenternainment20logo-625x625.png") center/cover;
+}
+
+.book[data-id="6"]:hover{
+  background: url("dc20logo-618x618.jpg") center/cover;
+}
+
+.book[data-id="7"]:hover{
+  background: url("boom20logo-256x256.jpg") center/cover;
+}
+
+.book[data-id="8"]:hover{
+  background: url("viz-media-625x375.jpg") center/cover;
+}
+
+
+/* PRICING */
+.pricing {
+  padding: 40px 20px;
+  background-color: dimgray;
+  color:lightblue;
+  font-size: 30px;  
+  font-family:"Dela Gothic One", cursive;
+}
+
+.pricing-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.price-card {
+  background: black;
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price-card p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.price-card:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER & MISC */
+.footer { 
+  background: #081f4b; padding: 40px; 
+  text-align: center; 
+}
+.social-links { 
+  margin-top: 20px; display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+}
+.social-links a { 
+  color: white; 
+  text-decoration: none; 
+}
+
+/* RESPONSIVE MENU */
+.menu-icon {
+  display: block; /* Show hamburger on mobile */
+  font-size: 28px;
+  cursor: pointer;
+  color: lightcoral;
+}
+
+.menu {
+  background-color: #081f4b;
+  border: 2px solid #333;
+  border-radius: 5px;
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  width: 200px;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: lightcoral;
+  z-index: 1001;
+}
+
+.menu.active {
+  display: block;
+}
+
+/* FOR DESKTOP */
+@media only screen and (min-width: 700px) {
+  .site-header { padding: 15px 40px; }
+  
+  /* Show links on desktop */
+  .nav-links { 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 30px;
+    font-family: dela gothic one, cursive;
+  }
+
+  /* Hides the hamburger icon */
+  .menu-icon { 
+    display: none !important;
+  }
+  .menu { 
+    display: none !important;
+  }
+
+  .home h1 { 
+    font-size: 4rem; 
+  }
+
+  .card-section { 
+    padding: 80px 40px; font-size: 40px; 
+  }
+  .card-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .about { 
+    padding: 110px 80px; 
+  }
+  .about-page { 
+    grid-template-columns: 1fr 1fr; 
+    border-radius: 40px; 
+    padding: 40px;
+    font-size: 1.5rem;
+  }
+  .about-page h2 { 
+    font-size: 60px; 
+  }
+
+  #books_container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .book{
+    border: 1px solid #ccc;
+    color: black;
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
+    /*width for 4 columns */
+    width: calc(25% - 1rem); 
+  }
+
+  .pricing-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
