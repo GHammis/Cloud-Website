@@ -8,7 +8,7 @@ const path = require('path');
 
 //Importing MongoDB
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
+require('dotenv').config(); //placing mongodb link/local port in the .env file
 const client = new MongoClient(process.env.MONGO_URI); 
 
 //creating server
@@ -27,29 +27,27 @@ const server = http.createServer((req, res) => {
     );
     }//if requesting api
     else if (req.url === '/api') {
-        async function getData() {
-            try {
-                await client.connect(); //waiting for connection
-                const database = client.db('website355Database'); //locating mongodb database
-                const collection = database.collection('website355'); //locating mongodb collection
-                const data = await collection.find({}).toArray(); //turning it into an array
-                
-                res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
-                res.end(JSON.stringify(data));
-            } catch (err) {
-                console.error("DEBUG MONGODB ERROR:", err); // Showing error in terminal
-                res.writeHead(500);
-                res.end("Error fetching from MongoDB");
-            }
+        //grab data from mongodb
+    async function getData() {
+        try {
+            const database = client.db('website355Database');
+            const mongoData = await database.collection('website355').find({}).toArray(); //using await to wait for connection (asyncronous), then finding ALL data
+            
+            res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+            res.end(JSON.stringify(mongoData)); // Sending just the array
+        } catch (err) {
+            res.writeHead(500);
+            res.end("Error");
         }
-        getData();
     }
+    getData();
+}
     // Handle static files (e.g., CSS, JS, images)
     else {
         const filePath = path.join(__dirname, 'front_end', req.url);
         fs.readFile(filePath, (err, content) => {
             if (err) {
-                // If file not found, serve 404
+                // If file not found, give 404
                 fs.readFile(path.join(__dirname, '404.html'), (err404, content404) => {
                     if (err404) throw err404;
                     res.writeHead(404, {'Content-Type': 'text/html'});
@@ -71,7 +69,7 @@ const server = http.createServer((req, res) => {
     }
 });
 
-//Creating server to run in "localhost:5959", once created will send message
+//Creating server to run in "localhost:3000"or "localhost:5959" if 3000 is not available, once created will send message
 const PORT = process.env.PORT || 5959; 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

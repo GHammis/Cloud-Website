@@ -36,6 +36,7 @@ body {
   padding: 15px 20px;
   position: relative;
   z-index: 1000;
+  font-size: 1.2rem;
 }
 
 .nav-container {
@@ -255,7 +256,7 @@ body {
 }
 
 .book[data-id="3"]:hover{
-  background: url("https://comicbookclublive.com/wp-content/uploads/2024/10/idw-logo-jpg.webp") center/cover;
+  background: url("https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122016/untitled-2_42.jpg?itok=C369DbIv") center/cover;
 }
 
 .book[data-id="4"]:hover{
@@ -357,8 +358,18 @@ body {
   display: block;
 }
 
+.container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a:link{
+  color: lightcoral;
+}
+
 /* FOR DESKTOP */
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 750px) {
   .site-header { padding: 15px 40px; }
   
   /* Show links on desktop */
@@ -390,6 +401,10 @@ body {
     grid-template-columns: repeat(3, 1fr); 
   }
 
+  .card1 .card2 .card3{
+    padding: 40px;
+  }
+
   .about { 
     padding: 110px 80px; 
   }
@@ -409,15 +424,18 @@ body {
     flex-direction: row;
     gap: 1rem;
     justify-content: center;
-    padding: 20px;
+    
   }
 
   .book{
     border: 1px solid #ccc;
     color: black;
     background: white;
-    padding: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     border-radius: 20px;
+    text-align: center;
+    justify-content: center;
     /*width for 4 columns */
     width: calc(25% - 1rem); 
   }
@@ -433,6 +451,7 @@ body {
 
 <!-- NAVBAR -->
 <header class="site-header">
+  <div class="container"> <!-- ✅ added -->
    <i class="fa-solid fa-bars menu-icon" id="menuIcon"></i>
   <nav class="navbar">
     <ul class="nav-links"> 
@@ -450,21 +469,26 @@ body {
       </ul>
     </div>
   </nav>
+  </div> <!-- ✅ added -->
 </header>
 
 <!-- HOME -->
 <section class="home">
   <div class="home-overlay"></div>
-  <div class="home-content">
-    <h1>Comic Sagas</h1>
-    <p>
-      A catalogue of the most influential comic storylines of all time and where to find them.
-    </p>
-  </div>
+  <div class="container"> <!-- ✅ added -->
+    <div class="home-content">
+      <h1>Comic Sagas</h1>
+      <p>
+        A catalogue of the most influential comic storylines of all time and where to find them.
+      </p>
+    </div>
+  </div> <!-- ✅ added -->
 </section>
 
 <!-- STORYLINES -->
 <section id="storylines" class="card-section">
+
+  <div class="container"> <!-- ✅ added -->
 
   <h2>Storylines You Can Find</h2>
 
@@ -504,11 +528,14 @@ body {
 </article>
 
   </div>
+  </div> <!-- ✅ added -->
 </section>
 
 <!-- ABOUT -->
 
 <section id="about-us" class="about">
+
+  <div class="container"> <!-- ✅ added -->
 
   <div class="about-grid">
 
@@ -529,21 +556,28 @@ body {
 
     </article>
   </div>
+  </div> <!-- ✅ added -->
 </section>
 
 <!-- PUBLISHERS GALLERY -->
 
 <section id="catalogue"class="gallery">
 
+  <div class="container"> <!-- ✅ added -->
+
   <h2>Publishers From Across the World</h2>
 
   <div id="books_container"></div>
+
+  </div> <!-- ✅ added -->
 
 </section>
 
 <!-- PRICING -->
 
 <section class="pricing">
+
+  <div class="container"> <!-- ✅ added -->
 
   <h2>Subscription Tiers</h2>
 
@@ -584,11 +618,14 @@ body {
 </div>
 
   </div>
+  </div> <!-- ✅ added -->
 </section>
 
 <!-- SOCIAL -->
 
 <footer id="contact" class="footer">
+
+  <div class="container"> <!-- ✅ added -->
 
   <h2>Follow Us</h2>
 
@@ -598,6 +635,8 @@ body {
     <a href="#">Instagram</a>
     <a href="#">TikTok</a>
   </div>
+
+  </div> <!-- ✅ added -->
 
 </footer>
 
@@ -621,6 +660,48 @@ body {
 
 <!-- BOOKS API SCRIPT -->
   <script>
+    // New function to fetch your Cloud MongoDB data
+    async function getMongoBooks() {
+      try {
+
+        // This hits your server.js /api route
+        const response = await fetch("/api");
+        const mongoBooks = await response.json();
+        
+        console.log("MongoDB Data:", mongoBooks);
+
+        const books_container = document.getElementById('books_container');
+                
+        for(let book of mongoBooks) {
+
+          if (!book.title) {continue;} 
+
+          const single_book = document.createElement('div');
+          single_book.classList.add('book');
+          
+          // MongoDB uses _id, so we use that for the data-id
+          single_book.setAttribute('data-id', book._id); 
+
+          single_book.innerHTML = `
+            <h3> ${book.title}</h3>
+            <p><strong> Year: ${book.year} </strong></p>
+            <p><strong> In Stock: ${book.stocked} </strong></p>
+          `;
+
+          // Use the same styling logic
+          if(book.stocked === true || book.stocked === "true"){
+            single_book.style.backgroundColor = "lightblue";
+          } else {
+            single_book.style.backgroundColor = "maroon";
+            single_book.style.color = "white"; 
+          }
+          books_container.appendChild(single_book);
+        }
+      } catch(error) {
+        console.log("MongoDB Error --->: ", error);
+      }
+    }
+
     // async and wait
     async function getbooks(){
       try{
@@ -647,7 +728,7 @@ body {
           if(book.stocked){
             single_book.style.backgroundColor = "lightblue";
           }else{
-            single_book.style.backgroundColor = "maroon";
+            single_book.style.backgroundColor = "lightcoral";
           }
           books_container.appendChild(single_book);
         }
@@ -656,7 +737,10 @@ body {
         console.log("Error --->: ", error);
       }
     }
+     // Run both: the original GitHub one and the new Mongo one
     getbooks();
+    getMongoBooks();
+
   </script>
 </body>
 </html>
