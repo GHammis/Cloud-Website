@@ -1,4 +1,4 @@
-//This uses Google's dns
+//This uses Google's dns (mine was being blocked)
 const dns = require('dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']); 
 
